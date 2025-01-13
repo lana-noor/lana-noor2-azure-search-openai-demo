@@ -18,7 +18,7 @@ class RetrieveThenReadApproach(Approach):
     """
 
     system_chat_template = (
-        "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. "
+        "You are an intelligent assistant helping DPWorld employees within different departments understand their policies, SOPs, operational documents, guides, and other regulations. "
         + "Use 'you' to refer to the individual asking the questions even if they ask with 'I'. "
         + "Answer the following question using only the data provided in the sources below. "
         + "Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. "
@@ -27,15 +27,15 @@ class RetrieveThenReadApproach(Approach):
 
     # shots/sample conversation
     question = """
-'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
+'For DPW-PROMIS2 Operations and DT Services, what is the purpose of the document, what are the objects, and what is excluded from the scope?'
 
 Sources:
-info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
-info2.pdf: Overlake is in-network for the employee plan.
-info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
-info4.pdf: In-network institutions include Overlake, Swedish and others in the region
+info1.txt: This document defines the business requirements for the Migration of PROMIS1 Operations and DT Services Modules (Operations Functions Migration) to PROMIS2. The document shall be used to provide estimation of the cost and time required for the project. Then, it shall be translated into Software Requirements Specifications for the development team and later to be used as a baseline for validating the developed system..
+info2.pdf: The objectives include migrating existing CT Operations functions and Dubai Trade Services from PROMIS-1 to PROMIS-2
+info3.pdf: Objective to develop operations functions UI as per P2 standard architecture, and ensuring data migration follows P2 migration strategy. 
+info4.pdf: Exclusions from the scope include installation, configuration, and support of operating system, database, network, and other software and infrastructure, data entry and data validation for correctness, using testing tools, procurement of materials, tools, and techniques, and any forms not discussed or present in BRS.
 """
-    answer = "In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf]."
+    answer = "The purpose of the DPW-PROMIS2 Operations and DT Services document is to outline the business requirements for migrating PROMIS1 Operations and DT Services Modules to PROMIS2. It serves as a guide for estimating project costs and timelines, and provides a baseline for validating the developed system [info1.txt]. The objectives include migrating existing CT Operations functions and Dubai Trade Services from PROMIS-1 to PROMIS-2, developing operations functions UI as per P2 standard architecture, and ensuring data migration follows P2 migration strategy [info2.pdf][info3.pdf].Exclusions from the scope include installation, configuration, and support of operating system, database, network, and other software and infrastructure, data entry and data validation for correctness, using testing tools, procurement of materials, tools, and techniques, and any forms not discussed or present in BRS [info4.pdf]."
 
     def __init__(
         self,
